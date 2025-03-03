@@ -1,0 +1,30 @@
+<h1>Productos en Tiempo Real</h1>
+<form onsubmit="event.preventDefault(); addProduct();">
+  <input type="text" id="name" placeholder="Nombre del producto" required>
+  <input type="text" id="description" placeholder="Descripción del producto" required>
+  <input type="number" id="price" placeholder="Precio del producto" required>
+  <input type="text" id="category" placeholder="Categoría del producto" required>
+  <input type="text" id="thumbnail" placeholder="Nombre del archivo de imagen" required>
+  <button type="submit">Agregar Producto</button>
+</form>
+
+<ul id="productList">
+  {{#each products}}
+    <li>
+      <h2>{{this.title}}</h2>
+      <img src="{{this.thumbnails.[0]}}" alt="{{this.title}}" />
+      <p>{{this.description}}</p>
+      <p>Precio: ${{this.price}}</p>
+      <button onclick="addToCart('{{this.id}}')">Agregar al carrito</button>
+    </li>
+  {{/each}}
+</ul>
+
+<div>
+  <h2>Carrito de Compras</h2>
+  <ul id="cartList"></ul>
+  <p id="totalPrice"></p>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

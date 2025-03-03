@@ -1,0 +1,14 @@
+<h1>{{title}}</h1>
+<ul id="productList">
+  {{#each products}}
+    <li>
+      <h2>{{this.title}}</h2>
+      <img src="{{this.thumbnails.[0]}}" alt="{{this.title}}" />
+      <p>{{this.description}}</p>
+      <p>Precio: ${{this.price}}</p>
+      <button onclick="addToCart('{{this.id}}')">Agregar al carrito</button>
+    </li>
+  {{/each}}
+</ul>
+
+<script src="/js/realTimeProducts.js"></script>
